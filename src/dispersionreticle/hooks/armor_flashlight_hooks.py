@@ -36,8 +36,8 @@ if isClientWG():
     from gui.armor_flashlight.battle_controller import ArmorFlashlightBattleController
     from aih_constants import GunMarkerState
 
-    # make sure to invoke armor flashlight state update only for vanilla client/server reticle
-    # and only for client reticle, when both client and server reticles are displayed
+    # make sure to invoke armor flashlight state update only for client reticle,
+    # when both client and server reticles are displayed
     # otherwise, when "Use server aim" is checked (and in some condition even with unchecked),
     # armor flashlight starts flickering
     #
@@ -79,8 +79,7 @@ if isClientWG():
             if markerType == GUN_MARKER_TYPE.CLIENT:
                 func(self, markerType, gunMarkerState, *args, **kwargs)
         else:
-            if markerType == GUN_MARKER_TYPE.CLIENT or markerType == GUN_MARKER_TYPE.SERVER:
-                func(self, markerType, gunMarkerState, *args, **kwargs)
+            func(self, markerType, gunMarkerState, *args, **kwargs)
 
     # dirty hack
     #
